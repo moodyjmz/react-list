@@ -1,6 +1,6 @@
 # React List
 
-An attempt to make a small app to pull trending github repos.
+An attempt to make a small app to pull trending github repos. It allows for repos to be favourited and also filtered via programming language.
 
 The focus for this is to do things reasonably quickly.
 
