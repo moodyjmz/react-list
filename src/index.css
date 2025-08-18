@@ -1,7 +1,8 @@
 :root {
   --default-line-color: #ededed;
   --border-color: var(--default-line-color);
-  --lozenge-bg-color: var(--default-line-color);
+  --lozenge-bg-color: #666;
+  --default-item-padding: 20px;
 }
 .box {
   max-width: 800px;
