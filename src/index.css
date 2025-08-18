@@ -1,0 +1,15 @@
+:root {
+  --default-line-color: #ededed;
+  --border-color: var(--default-line-color);
+  --lozenge-bg-color: var(--default-line-color);
+}
+.box {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border: var(--border-color) 1px solid;
+}
+
+button {
+  border: none;
+}

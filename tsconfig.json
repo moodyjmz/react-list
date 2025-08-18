@@ -1,0 +1,32 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@feature/*": [
+        "src/feature/*"
+      ]
+    },
+  },
+  "include": [
+    "src",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
