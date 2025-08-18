@@ -1,5 +1,6 @@
 import { test, vi, expect } from 'vitest';
 import { fetchPopularRepos } from '../fetchPopularRepos';
+import { afterEach } from 'vitest';
 
 test('fetches data successfully from API', async () => {
     const lastWeek = new Date();
@@ -35,4 +36,8 @@ test('fetches data successfully from API', async () => {
     // Check that fetch was called exactly once
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(fetch).toHaveBeenCalledWith(`https://api.github.com/search/repositories?q=created:>${dateStr}&sort=stars&order=desc`);
+});
+
+afterEach(() => {
+    vi.clearAllMocks();
 });
