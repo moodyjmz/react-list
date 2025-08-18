@@ -15,6 +15,7 @@ tested, via
 Things I am not happy with and would change:
 
 - CSS vs SASS, this is a choice, however I feel hampered by CSS alone
+- Not using something like bootstrap... I wanted to use CSS alone though
 - Tests, there is not enough testing
 - Organisation of TS types and interfaces - this is not uniform and grew organically
 - Lack of suspense or error boundaries
