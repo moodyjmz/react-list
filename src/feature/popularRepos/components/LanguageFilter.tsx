@@ -1,20 +1,40 @@
+import React from "react";
+
 export interface LanguageFilterProps {
     languages: string[];
     selectedLanguage: string | null;
     setSelectedLanguage: (language: string | null) => void;
+    className?: string;
+    style?: React.CSSProperties;
+    label?: string;
 }
 
-export default function LanguageFilter({ languages, selectedLanguage, setSelectedLanguage }: LanguageFilterProps) {
+export default function LanguageFilter({
+    languages,
+    selectedLanguage,
+    setSelectedLanguage,
+    className,
+    style,
+    label = "Filter by language",
+}: LanguageFilterProps) {
     return (
-        <select
-            aria-label='Filter by language'
-            value={selectedLanguage || ''}
-            onChange={e => setSelectedLanguage(e.target.value || null)}
-        >
-            <option value=''>All languages</option>
-            {languages.map(lang => (
-                <option key={lang} value={lang}>{lang}</option>
-            ))}
-        </select>
-    )
+        <div className={className} style={style}>
+            {label && (
+                <label htmlFor="language-filter-select" style={{ marginRight: 8 }}>
+                    {label}:
+                </label>
+            )}
+            <select
+                id="language-filter-select"
+                aria-label={label}
+                value={selectedLanguage || ""}
+                onChange={e => setSelectedLanguage(e.target.value || null)}
+            >
+                <option value="">All languages</option>
+                {languages.map(lang => (
+                    <option key={lang} value={lang}>{lang}</option>
+                ))}
+            </select>
+        </div>
+    );
 }

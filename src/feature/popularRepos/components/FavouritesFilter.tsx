@@ -1,18 +1,22 @@
+import React from 'react';
+
 type Props = {
   active: boolean;
   onToggle: (arg0: boolean) => void;
 };
 
-export default function FavouritesFilter({ active, onToggle }: Props) {
+function FavouritesFilter({ active, onToggle }: Props) {
   return (
     <div className='button-split'>
       <button
+        type="button"
         onClick={() => onToggle(false)}
         aria-pressed={!active}
         aria-label="Show All"
         className={`button-toggle ${!active ? 'active' : ''}`}
       >All</button>
       <button
+        type="button"
         onClick={() => onToggle(true)}
         aria-pressed={active}
         aria-label="Show Favourites"
@@ -21,3 +25,5 @@ export default function FavouritesFilter({ active, onToggle }: Props) {
     </div>
   );
 }
+
+export default React.memo(FavouritesFilter);
