@@ -1,9 +1,13 @@
+import { memo } from 'react';
+
 type Props = {
   active: boolean;
 };
 
-export default function FavouritesStar({ active }: Props) {
+const FavouritesStar = memo(function FavouritesStar({ active }: Props) {
   return (
     <span>{active ? '★' : '☆'}</span>
   );
-}
+});
+
+export default FavouritesStar;

@@ -46,7 +46,9 @@ export async function fetchPopularRepos(): Promise<PopularReposResponse> {
   const repos: Repo[] = [];
   raw?.items.forEach((item: ApiRepo) => {
     // get languages and extract item data we care about
-    item.language && typeof item.language === 'string' && languagesSet.add(item.language);
+    if (item.language && typeof item.language === 'string') {
+      languagesSet.add(item.language);
+    }
     repos.push(createRepoItem(item, extractKeys));
   });
   const languages: string[] = Array.from(languagesSet);
