@@ -3,8 +3,14 @@ import { render, screen } from '@testing-library/react';
 import RepoList from '../RepoList';
 import type { DisplayRepo } from '@feature/popularRepos/hooks/useRepoExplorer';
 
+interface MockRepoListItemProps {
+  repo: { id: number; name: string };
+  isFavourite: boolean;
+  onToggleFavourite: (id: number) => void;
+}
+
 vi.mock('../RepoListItem', () => ({
-  default: ({ repo, isFavourite, onToggleFavourite }: any) => (
+  default: ({ repo, isFavourite, onToggleFavourite }: MockRepoListItemProps) => (
     <li data-testid={`repo-item-${repo.id}`}>
       {repo.name} - {isFavourite ? 'Favourite' : 'Not Favourite'}
       <button onClick={() => onToggleFavourite(repo.id)}>Toggle</button>
