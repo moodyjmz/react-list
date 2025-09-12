@@ -69,10 +69,9 @@ jobs:
       run: npm ci
 
     - name: Build for production
-      run: npm run build
+      run: npx vite build
       env:
-        # Set base URL for GitHub Pages (replace 'repo-name' with your actual repository name)
-        VITE_BASE_URL: '/react-list/'
+        NODE_ENV: production
 
     - name: Setup Pages
       uses: actions/configure-pages@v4
