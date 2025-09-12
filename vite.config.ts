@@ -4,6 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: process.env.VITE_BASE_URL || '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -15,5 +16,16 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './vitest.setup.ts',
+    coverage: {
+      reporter: ['text', 'lcov', 'html'],
+      exclude: [
+        'node_modules/**',
+        'src/vite-env.d.ts',
+        '**/*.test.{ts,tsx}',
+        '**/*.spec.{ts,tsx}',
+        'vitest.setup.ts',
+        'dist/**'
+      ]
+    }
   },
 })
