@@ -1,29 +1,37 @@
-import React from 'react';
+import { memo, useCallback } from 'react';
 
 type Props = {
   active: boolean;
   onToggle: (arg0: boolean) => void;
 };
 
-function FavouritesFilter({ active, onToggle }: Props) {
+const FavouritesFilter = memo(function FavouritesFilter({ active, onToggle }: Props) {
+  const handleShowAll = useCallback(() => {
+    onToggle(false);
+  }, [onToggle]);
+  
+  const handleShowFavourites = useCallback(() => {
+    onToggle(true);
+  }, [onToggle]);
+
   return (
-    <div className='button-split'>
+    <div className="button-split">
       <button
         type="button"
-        onClick={() => onToggle(false)}
+        onClick={handleShowAll}
         aria-pressed={!active}
         aria-label="Show All"
         className={`button-toggle ${!active ? 'active' : ''}`}
       >All</button>
       <button
         type="button"
-        onClick={() => onToggle(true)}
+        onClick={handleShowFavourites}
         aria-pressed={active}
         aria-label="Show Favourites"
         className={`button-toggle ${active ? 'active' : ''}`}
       >Favourites</button>
     </div>
   );
-}
+});
 
-export default React.memo(FavouritesFilter);
+export default FavouritesFilter;

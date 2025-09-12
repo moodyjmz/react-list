@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo, useCallback } from 'react';
 
 export interface LanguageFilterProps {
     languages: string[];
@@ -9,14 +9,17 @@ export interface LanguageFilterProps {
     label?: string;
 }
 
-export default function LanguageFilter({
+const LanguageFilter = memo(function LanguageFilter({
     languages,
     selectedLanguage,
     setSelectedLanguage,
     className,
     style,
-    label = "Filter by language",
+    label = 'Filter by language',
 }: LanguageFilterProps) {
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedLanguage(e.target.value || null);
+    }, [setSelectedLanguage]);
     return (
         <div className={className} style={style}>
             {label && (
@@ -27,8 +30,8 @@ export default function LanguageFilter({
             <select
                 id="language-filter-select"
                 aria-label={label}
-                value={selectedLanguage || ""}
-                onChange={e => setSelectedLanguage(e.target.value || null)}
+                value={selectedLanguage || ''}
+                onChange={handleChange}
             >
                 <option value="">All languages</option>
                 {languages.map(lang => (
@@ -37,4 +40,6 @@ export default function LanguageFilter({
             </select>
         </div>
     );
-}
+});
+
+export default LanguageFilter;

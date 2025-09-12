@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { useRepoExplorer } from '../hooks/useRepoExplorer';
 import RepoList from './RepoList';
 import FavouritesFilter from './FavouritesFilter';
 import LanguageFilter from './LanguageFilter';
 import type { PopularReposResponse } from '../api/fetchPopularRepos';
 
-export default function RepoExplorer({ repos, languages }: PopularReposResponse) {
+const RepoExplorer = memo(function RepoExplorer({ repos, languages }: PopularReposResponse) {
   const {
     displayRepos,
     toggleFavourite,
@@ -15,8 +16,8 @@ export default function RepoExplorer({ repos, languages }: PopularReposResponse)
   } = useRepoExplorer(repos);
 
   return (
-    <div className='container'>
-      <div aria-label='Filters' className='repo-filters'>
+    <div className="container">
+      <div aria-label="Filters" className="repo-filters">
         <LanguageFilter
           languages={languages}
           selectedLanguage={selectedLanguage}
@@ -30,4 +31,6 @@ export default function RepoExplorer({ repos, languages }: PopularReposResponse)
       <RepoList repos={displayRepos} toggleFavourite={toggleFavourite} />
     </div>
   );
-}
+});
+
+export default RepoExplorer;

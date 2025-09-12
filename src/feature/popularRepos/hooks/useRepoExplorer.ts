@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useLocalStorage } from '@common/hooks/useLocalStorage';
 import type { Repo } from '../api/fetchPopularRepos';
 
@@ -13,13 +13,13 @@ export function useRepoExplorer(repos: Repo[]) {
   const [showOnlyFavourites, setShowOnlyFavourites] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
-  const toggleFavourite = (id: number) => {
-    setFavourites(
-      favourites.includes(id)
-        ? favourites.filter(favId => favId !== id)
-        : [...favourites, id]
+  const toggleFavourite = useCallback((id: number) => {
+    setFavourites(prevFavourites =>
+      prevFavourites.includes(id)
+        ? prevFavourites.filter(favId => favId !== id)
+        : [...prevFavourites, id]
     );
-  };
+  }, [setFavourites]);
 
   const displayRepos: DisplayRepo[] = useMemo(() => (
     repos
