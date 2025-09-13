@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import FavouritesFilter from '../FavouritesFilter';
+import styles from '@/App.module.css';
 
 describe('FavouritesFilter Component', () => {
     it('renders correctly', () => {
@@ -15,16 +16,16 @@ describe('FavouritesFilter Component', () => {
     it('Has class name active when Favourite is true', () => {
         render(<FavouritesFilter active={true} onToggle={() => {}}/>);
         const favourites = screen.getByText('Favourites');
-        expect(favourites).toHaveClass('active');
+        expect(favourites).toHaveClass(styles.active);
         const all = screen.getByText('All');
-        expect(all).not.toHaveClass('active');
+        expect(all).not.toHaveClass(styles.active);
     });
 
     it('Has class name active when Favourite is false', () => {
         render(<FavouritesFilter active={false} onToggle={() => {}}/>);
         const all = screen.getByText('All');
-        expect(all).toHaveClass('active');
+        expect(all).toHaveClass(styles.active);
         const favourites = screen.getByText('Favourites');
-        expect(favourites).not.toHaveClass('active');
+        expect(favourites).not.toHaveClass(styles.active);
     });
 });
