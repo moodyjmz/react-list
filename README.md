@@ -4,7 +4,7 @@ A high-performance React application that displays trending GitHub repositories 
 
 ## 🚀 Live Demo
 
-The application is automatically deployed to GitHub Pages: [View Demo](https://your-username.github.io/react-list/)
+The application is automatically deployed to GitHub Pages: [View Demo](https://moodyjmz.github.io/react-list/)
 
 ## ✨ Features
 
@@ -34,7 +34,7 @@ The application is automatically deployed to GitHub Pages: [View Demo](https://y
 
 ### Installation
 ```bash
-git clone https://github.com/your-username/react-list.git
+git clone https://github.com/moodyjmz/react-list.git
 cd react-list
 npm install
 ```
