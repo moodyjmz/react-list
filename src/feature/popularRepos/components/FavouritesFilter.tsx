@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import styles from '@/App.module.css';
 
 type Props = {
   active: boolean;
@@ -21,14 +22,14 @@ const FavouritesFilter = memo(function FavouritesFilter({ active, onToggle }: Pr
         onClick={handleShowAll}
         aria-pressed={!active}
         aria-label="Show All"
-        className={`button-toggle ${!active ? 'active' : ''}`}
+        className={`${styles.buttonToggle} ${!active ? styles.active : ''}`}
       >All</button>
       <button
         type="button"
         onClick={handleShowFavourites}
         aria-pressed={active}
         aria-label="Show Favourites"
-        className={`button-toggle ${active ? 'active' : ''}`}
+        className={`${styles.buttonToggle} ${active ? styles.active : ''}`}
       >Favourites</button>
     </div>
   );
