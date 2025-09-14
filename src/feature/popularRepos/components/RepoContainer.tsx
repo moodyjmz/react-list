@@ -3,8 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { refreshData } from '@/utils/appRefresh';
 import usePopularRepos from '../hooks/usePopularRepos';
 import RepoExplorer from './RepoExplorer';
-import styles from '@/App.module.css';
-import indexStyles from '@/index.module.css';
 
 const ErrorFallback = ({ resetErrorBoundary }: { resetErrorBoundary: () => void }) => (
   <div role="alert">
@@ -22,9 +20,9 @@ export default function RepoContainer() {
   }, []);
 
   return (
-    <main>
-      <div className={indexStyles.box}>
-        <h1 className={styles.title}>{appTitle}</h1>
+    <main id="main-content">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-2xl m-0 p-5">{appTitle}</h1>
         
         <ErrorBoundary 
           FallbackComponent={ErrorFallback}
@@ -36,7 +34,10 @@ export default function RepoContainer() {
               <button onClick={() => refetch()}>Retry</button>
             </>
           ) : isLoading ? (
-            <div className={styles.loaderWrapper}><span className={styles.loader}></span></div>
+            <div className="flex justify-center items-center h-screen w-screen" role="status" aria-live="polite">
+              <span className="text-6xl font-bold opacity-80 text-gray-600 animate-pulse">Loading trending repositories...</span>
+              <span className="sr-only">Please wait while we fetch the latest trending GitHub repositories</span>
+            </div>
           ) : (
             data && <RepoExplorer repos={data.repos} languages={data.languages} />
           )}

@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import FavouritesFilter from '../FavouritesFilter';
-import styles from '@/App.module.css';
 
 describe('FavouritesFilter Component', () => {
     it('renders correctly', () => {
@@ -13,19 +12,19 @@ describe('FavouritesFilter Component', () => {
         expect(all).toBeInTheDocument();
     });
 
-    it('Has class name active when Favourite is true', () => {
+    it('Has active styling when Favourite is true', () => {
         render(<FavouritesFilter active={true} onToggle={() => {}}/>);
         const favourites = screen.getByText('Favourites');
-        expect(favourites).toHaveClass(styles.active);
+        expect(favourites).toHaveClass('bg-blue-600', 'text-white');
         const all = screen.getByText('All');
-        expect(all).not.toHaveClass(styles.active);
+        expect(all).toHaveClass('bg-white', 'text-gray-700');
     });
 
-    it('Has class name active when Favourite is false', () => {
+    it('Has active styling when Favourite is false', () => {
         render(<FavouritesFilter active={false} onToggle={() => {}}/>);
         const all = screen.getByText('All');
-        expect(all).toHaveClass(styles.active);
+        expect(all).toHaveClass('bg-blue-600', 'text-white');
         const favourites = screen.getByText('Favourites');
-        expect(favourites).not.toHaveClass(styles.active);
+        expect(favourites).toHaveClass('bg-white', 'text-gray-700');
     });
 });
