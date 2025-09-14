@@ -34,8 +34,8 @@ export default function RepoContainer() {
               <button onClick={() => refetch()}>Retry</button>
             </>
           ) : isLoading ? (
-            <div className="flex justify-center items-center h-screen w-screen" role="status" aria-live="polite">
-              <span className="text-6xl font-bold opacity-80 text-gray-600 animate-pulse">Loading trending repositories...</span>
+            <div className="flex justify-center items-center py-20" role="status" aria-live="polite">
+              <span className="text-2xl font-medium text-gray-600 animate-pulse">Loading trending repositories...</span>
               <span className="sr-only">Please wait while we fetch the latest trending GitHub repositories</span>
             </div>
           ) : (
