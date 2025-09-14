@@ -4,7 +4,6 @@ import RepoList from './RepoList';
 import FavouritesFilter from './FavouritesFilter';
 import LanguageFilter from './LanguageFilter';
 import type { PopularReposResponse } from '../api/fetchPopularRepos';
-import styles from '@/App.module.css';
 
 const RepoExplorer = memo(function RepoExplorer({ repos, languages }: PopularReposResponse) {
   const {
@@ -18,7 +17,8 @@ const RepoExplorer = memo(function RepoExplorer({ repos, languages }: PopularRep
 
   return (
     <div className="container">
-      <div aria-label="Filters" className={styles.repoFilters}>
+      <h2 className="sr-only">Repository Filters and Results</h2>
+      <div id="filters" aria-label="Filters" className="flex justify-end gap-2.5 p-5">
         <LanguageFilter
           languages={languages}
           selectedLanguage={selectedLanguage}
@@ -29,7 +29,9 @@ const RepoExplorer = memo(function RepoExplorer({ repos, languages }: PopularRep
           onToggle={setShowOnlyFavourites}
         />
       </div>
-      <RepoList repos={displayRepos} toggleFavourite={toggleFavourite} />
+      <div aria-live="polite" aria-label={`Showing ${displayRepos.length} repositories`}>
+        <RepoList repos={displayRepos} toggleFavourite={toggleFavourite} />
+      </div>
     </div>
   );
 });

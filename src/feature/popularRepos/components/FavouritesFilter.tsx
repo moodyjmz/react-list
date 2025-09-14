@@ -1,5 +1,4 @@
 import { memo, useCallback } from 'react';
-import styles from '@/App.module.css';
 
 type Props = {
   active: boolean;
@@ -16,20 +15,24 @@ const FavouritesFilter = memo(function FavouritesFilter({ active, onToggle }: Pr
   }, [onToggle]);
 
   return (
-    <div className="button-split">
+    <div className="flex">
       <button
         type="button"
         onClick={handleShowAll}
         aria-pressed={!active}
         aria-label="Show All"
-        className={`${styles.buttonToggle} ${!active ? styles.active : ''}`}
+        className={`px-4 py-2 text-sm font-medium border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+          !active ? 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700' : 'bg-white text-gray-700 hover:bg-gray-50'
+        }`}
       >All</button>
       <button
         type="button"
         onClick={handleShowFavourites}
         aria-pressed={active}
         aria-label="Show Favourites"
-        className={`${styles.buttonToggle} ${active ? styles.active : ''}`}
+        className={`px-4 py-2 text-sm font-medium border border-l-0 border-gray-300 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+          active ? 'bg-blue-600 text-white border-blue-600 hover:bg-blue-700' : 'bg-white text-gray-700 hover:bg-gray-50'
+        }`}
       >Favourites</button>
     </div>
   );

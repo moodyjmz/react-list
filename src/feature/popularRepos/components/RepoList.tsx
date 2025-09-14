@@ -12,16 +12,19 @@ const RepoList = memo(function RepoList({
   toggleFavourite,
 }: Props) {
   return (
-    <ul>
-      {repos.map((repo) => (
+    <section>
+      <h3 className="sr-only">Repository List</h3>
+      <ul>
+        {repos.map((repo) => (
         <RepoListItem
           key={repo.id}
           repo={repo.payload}
           isFavourite={repo.isFavourite}
           onToggleFavourite={toggleFavourite}
         />
-      ))}
-    </ul>
+        ))}
+      </ul>
+    </section>
   );
 });
 

@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import RepoListItem from '../RepoListItem'
-import styles from '@/App.module.css'
 
 describe('RepoListItem Component', () => {
     const testRepoItem = {
@@ -41,15 +40,15 @@ describe('RepoListItem Component', () => {
     button.click();
   });
 
-  it('renders with favourite button class when isFavourite is true', () => {
+  it('renders with favourite button styling when isFavourite is true', () => {
     render(<RepoListItem repo={testRepoItem} isFavourite={testIsFavouriteTrue} onToggleFavourite={testToggle}/>);
     const button = screen.getByRole('button', { name: 'Unfavorite repo' });
-    expect(button).toHaveClass(styles.favouriteButton);
+    expect(button).toHaveClass('flex', 'items-center', 'justify-center', 'w-8', 'h-8', 'rounded-full');
   });
 
-  it('renders with favourite button class when isFavourite is false', () => {
+  it('renders with favourite button styling when isFavourite is false', () => {
     render(<RepoListItem repo={testRepoItem} isFavourite={testIsFavouriteFalse} onToggleFavourite={testToggle}/>);
     const button = screen.getByRole('button', { name: 'Favourite repo' });
-    expect(button).toHaveClass(styles.favouriteButton);
+    expect(button).toHaveClass('flex', 'items-center', 'justify-center', 'w-8', 'h-8', 'rounded-full');
   });
 });

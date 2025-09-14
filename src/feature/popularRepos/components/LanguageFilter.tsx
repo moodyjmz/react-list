@@ -23,7 +23,7 @@ const LanguageFilter = memo(function LanguageFilter({
     return (
         <div className={className} style={style}>
             {label && (
-                <label htmlFor="language-filter-select" style={{ marginRight: 8 }}>
+                <label htmlFor="language-filter-select" className="mr-2">
                     {label}:
                 </label>
             )}
@@ -32,6 +32,7 @@ const LanguageFilter = memo(function LanguageFilter({
                 aria-label={label}
                 value={selectedLanguage || ''}
                 onChange={handleChange}
+                className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
                 <option value="">All languages</option>
                 {languages.map(lang => (
