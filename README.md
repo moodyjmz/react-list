@@ -11,9 +11,10 @@ The application is automatically deployed to GitHub Pages: [View Demo](https://m
 - 📊 **Trending Repositories**: Displays popular GitHub repos from the past week
 - ⭐ **Favorites**: Save your favorite repos to local storage
 - 🔍 **Filtering**: Filter by programming language and show only favorites
+- 🎨 **Modern Design**: Beautiful card-based UI with Tailwind CSS utility classes
 - 🎯 **Performance**: Optimized with React.memo, useCallback, and useMemo
 - 🛡️ **Error Handling**: Robust error boundaries and retry functionality
-- ♿ **Accessibility**: Full ARIA support and semantic HTML
+- ♿ **Accessibility**: Full ARIA support, skip links, and WCAG 2.1 AA compliance
 - 📱 **Responsive**: Works great on all device sizes
 
 ## 🏗️ Tech Stack
@@ -21,6 +22,7 @@ The application is automatically deployed to GitHub Pages: [View Demo](https://m
 - **React 19** with latest features (Suspense, Error Boundaries)
 - **TypeScript** for type safety
 - **TanStack Query** for data fetching and caching
+- **Tailwind CSS** for utility-first styling and design system
 - **Vite** for fast development and building
 - **Vitest + RTL** for comprehensive testing (92% coverage)
 - **ESLint** for code quality
